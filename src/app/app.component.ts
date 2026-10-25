@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 
 // user Defined Components
-import { NotesComponent } from './Components/notes/notes.component';
-import { WorkingAreaComponent } from './Components/working-area/working-area.component';
+import { NotesComponent } from './component/notes/notes.component';
 
 @Component({
   selector: 'app-root',
-  imports: [NotesComponent, WorkingAreaComponent],
+  imports: [NotesComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
