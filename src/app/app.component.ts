@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+
+// user Defined Components
+import { NotesComponent } from './Components/notes/notes.component';
+import { WorkingAreaComponent } from './Components/working-area/working-area.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [NotesComponent, WorkingAreaComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  title = 'NoteTakingApp';
-}
+export class AppComponent {}
