@@ -1,0 +1,40 @@
+<div id="container">
+    <div id="note-list">
+        <div class="heading">
+            <h2>Notebook</h2>
+            <button (click)="addItem()">New</button>
+        </div>
+
+        <input type="text" id="search" name="search" placeholder="🔍 Search your notes..." [value]="searchText()"
+            (input)="searchText.set($any($event.target).value)" />
+
+        @for (note of filteredNotes(); track note.id) {
+        <div class="noteContent" [class.active]="note.id === selectedId()">
+            <div class="content" role="button" tabindex="0" (click)="openContent(note.id)"
+                (keydown.enter)="openContent(note.id)">
+                <h3>{{ note.title || 'Untitled note' }}</h3>
+                <p>{{ note.content }}</p>
+            </div>
+
+            <button class="delete" (click)="deleteNote(note.id)">Delete</button>
+        </div>
+        } @empty {
+        @if (notes().length === 0) {
+        <p class="empty">No notes yet. Click "New" to create one.</p>
+        } @else {
+        <p class="empty">No notes match your search.</p>
+        }
+        }
+    </div>
+
+    <div id="note-editor">
+        @if (selectedNote(); as note) {
+        <app-note-editor [note]="note" (changed)="updateNote($event)" />
+        } @else {
+        <div class="placeholder">
+            <p>Select a note or create a new one.</p>
+            <button (click)="addItem()">New</button>
+        </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="editor">
+    <input type="text" class="title" placeholder="Title" [value]="note().title"
+        (input)="changed.emit({ title: $any($event.target).value })" />
+
+    <textarea class="body" placeholder="Write your note..." [value]="note().content"
+        (input)="changed.emit({ content: $any($event.target).value })"></textarea>
+</div>

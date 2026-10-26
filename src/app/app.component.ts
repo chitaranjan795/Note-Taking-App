@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 // user Defined Components
-import { NotesComponent } from './component/notes/notes.component';
+import { NotesComponent } from './component/notes/NotesComponent';
 
 @Component({
   selector: 'app-root',

@@ -1,0 +1,252 @@
+:host {
+  display: block;
+  min-height: 100%;
+  color: #1f2937;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+}
+
+/* Main layout */
+#container {
+  display: flex;
+  gap: 24px;
+  min-height: 100vh;
+  padding: 24px;
+  box-sizing: border-box;
+  background: #f5f7fb;
+}
+
+/* Sidebar */
+#note-list {
+  width: 320px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  overflow-y: auto;
+}
+
+/* Sidebar heading */
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+
+  h2 {
+    margin: 0;
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #111827;
+  }
+
+  button {
+    padding: 9px 14px;
+    color: #ffffff;
+    background: #e44747;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      background: #d65050;
+    }
+  }
+}
+
+/* Search box */
+#search {
+  width: 100%;
+  padding: 12px 14px;
+  box-sizing: border-box;
+  color: #374151;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 9px;
+  outline: none;
+  font-size: 0.9rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &::placeholder {
+    color: #9ca3af;
+  }
+
+  &:focus {
+    background: #ffffff;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  }
+}
+
+/* Individual note card */
+.noteContent {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    background: #fafaff;
+    border-color: #c7d2fe;
+  }
+
+  &.active {
+    background: #eef2ff;
+    border-color: #818cf8;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.06);
+  }
+
+  .content {
+    flex: 1;
+    min-width: 0;
+    cursor: pointer;
+    outline: none;
+
+    &:focus-visible {
+      border-radius: 4px;
+      outline: 2px solid #6366f1;
+      outline-offset: 3px;
+    }
+
+    h3 {
+      margin: 0 0 6px;
+      color: #1f2937;
+      font-size: 0.98rem;
+      font-weight: 600;
+      overflow-wrap: anywhere;
+    }
+
+    p {
+      margin: 0;
+      color: #6b7280;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+/* Delete button */
+.delete {
+  flex-shrink: 0;
+  padding: 6px 9px;
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: #fee2e2;
+    border-color: #fecaca;
+  }
+}
+
+/* Empty states */
+.empty {
+  padding: 20px 10px;
+  color: #9ca3af;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Editor panel */
+#note-editor {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+/* No note selected */
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  height: 100%;
+  color: #9ca3af;
+  text-align: center;
+  gap: 12px;
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  button {
+    padding: 10px 20px;
+    color: #ffffff;
+    background: #e44747;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: #d65050;
+    }
+  }
+}
+
+/* Shared button behavior */
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  #container {
+    flex-direction: column;
+    gap: 16px;
+    padding: 12px;
+  }
+
+  #note-list {
+    width: 100%;
+    max-height: 40vh;
+    padding: 16px;
+  }
+
+  #note-editor {
+    width: 100%;
+    min-height: 400px;
+    padding: 12px;
+  }
+
+  .noteContent {
+    padding: 11px;
+  }
+}
